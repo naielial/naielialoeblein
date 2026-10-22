@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfólio de Naieli Loeblein, Product Owner.">
+<title>Naieli Loeblein</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna editorial de leitura, trajetória como linha do tempo, cases como fichas problema → ação → resultado */
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --fg:#121826; --muted:#5A6378; --line:#DCE1EA; --accent:#2457D6; --accent-soft:#E7EEFC;
+  --display:"Instrument Serif", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0A0F1A; --surface:#111827; --fg:#E9EDF5; --muted:#9AA5BA; --line:#243047; --accent:#6FA0FF; --accent-soft:#16233F; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0A0F1A; --surface:#111827; --fg:#E9EDF5; --muted:#9AA5BA; --line:#243047; --accent:#6FA0FF; --accent-soft:#16233F; color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:56px 72px;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:400}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;gap:20px}
+.hero h1{font-family:var(--display);font-size:clamp(48px,9vw,88px);line-height:.95;letter-spacing:-.01em}
+.hero h1 em{color:var(--accent)}
+.hero p{max-width:60ch;font-size:19px;margin:0;color:var(--fg)}
+.contact{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:15px}
+.contact .email{font-family:var(--mono);font-size:14px;user-select:all}
+button.copy{font:500 13px var(--body);background:var(--accent-soft);color:var(--accent);border:1px solid transparent;border-radius:6px;padding:6px 12px;cursor:pointer}
+button.copy:hover{border-color:var(--accent)}
+
+section{display:flex;flex-direction:column;gap:24px}
+section > h2{font-family:var(--display);font-size:clamp(32px,5vw,44px);line-height:1.05}
+.intro{max-width:62ch;color:var(--muted);margin:0}
+
+/* Destaque */
+.highlight{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:28px}
+.highlight .big{font-family:var(--display);font-size:clamp(72px,14vw,120px);line-height:.85;color:var(--accent)}
+.highlight p{margin:0;max-width:44ch;font-size:18px;min-width:0}
+@media (max-width:560px){.highlight{grid-template-columns:1fr}}
+
+/* Linha do tempo */
+ol.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+ol.timeline li{display:grid;grid-template-columns:118px 20px 1fr;gap:0 16px;position:relative}
+.t-date{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.t-dot{position:relative}
+.t-dot::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--line)}
+.t-dot::after{content:"";position:absolute;left:4px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+li.now .t-dot::after{background:var(--accent);border-color:var(--accent)}
+ol.timeline li:last-child .t-dot::before{bottom:auto;height:14px}
+.t-body{padding-bottom:28px;min-width:0}
+.t-body strong{font-weight:600}
+.t-body span{display:block;color:var(--muted);font-size:15px}
+@media (max-width:560px){ol.timeline li{grid-template-columns:20px 1fr}.t-date{grid-column:2;order:-1;padding:0}.t-dot{grid-row:1 / span 2;grid-column:1}}
+
+/* Cases */
+.cases{display:flex;flex-direction:column;gap:20px}
+article.case{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:18px}
+article.case h3{font-family:var(--display);font-size:30px;line-height:1.1}
+.case .meta{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:2px 8px}
+dl.steps{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+dl.steps div{display:flex;flex-direction:column;gap:6px;min-width:0}
+dl.steps dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+dl.steps dd{margin:0;font-size:15px}
+@media (max-width:720px){dl.steps{grid-template-columns:1fr}}
+
+/* Como trabalho */
+.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.how div{display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--fg);padding-top:14px;min-width:0}
+.how h3{font-family:var(--body);font-weight:600;font-size:17px}
+.how p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:560px){.how{grid-template-columns:1fr}}
+
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:4px 10px}
+
+footer{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion: no-preference){ button.copy{transition:border-color .15s} }
+</style>
+<style>html{color-scheme:light}*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="label">Product Owner · Chapecó, SC</span>
+    <h1>Naieli <em>Loeblein</em></h1>
+    <p>Passei por suporte, QA e desenvolvimento antes de chegar a produto. Hoje sou Product Owner do Opa! Suite, na IXC Soft, onde conduzo produtos SaaS B2B com IA, do discovery com clientes até a entrega e os indicadores.</p>
+    <div class="contact">
+      <span class="email" id="email">loebleinnaieli@gmail.com</span>
+      <button class="copy" id="copy-email" type="button">Copiar e-mail</button>
+      <a href="https://linkedin.com/in/naieli-loeblein" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <div class="highlight" aria-label="Principal resultado">
+    <span class="big">25%</span>
+    <p>do faturamento total do Opa! Suite vem do <strong>Opa! IA</strong>, módulo que acompanhei como PO desde a concepção, um ano após o lançamento.</p>
+  </div>
+
+  <section aria-labelledby="cases-h">
+    <span class="label">Cases</span>
+    <h2 id="cases-h">Problema, o que fiz, resultado</h2>
+    <div class="cases">
+
+      <article class="case">
+        <div class="meta"><span class="tag">IXC Soft</span><span class="tag">IA</span><span class="tag">Receita</span></div>
+        <h3>Opa! IA</h3>
+        <dl class="steps">
+          <div><dt>Problema</dt><dd>Levar inteligência artificial para dentro da operação de atendimento dos clientes do Opa! Suite como um módulo de valor próprio.</dd></div>
+          <div><dt>O que fiz</dt><dd>Atuei como PO desde a concepção: discovery com clientes, requisitos e regras de negócio, priorização e acompanhamento do lançamento.</dd></div>
+          <div><dt>Resultado</dt><dd>Um ano após o lançamento, o módulo representa 25% do faturamento total do produto.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="tag">IXC Soft</span><span class="tag">Lançamentos</span><span class="tag">Gestão de risco</span></div>
+        <h3>Lançamentos sem rollback</h3>
+        <dl class="steps">
+          <div><dt>Problema</dt><dd>O produto roda on-premise nos clientes e não permite voltar versão. Um erro em produção chega direto à operação deles.</dd></div>
+          <div><dt>O que fiz</dt><dd>Estruturei os lançamentos em fases: base interna, clientes piloto, beta e versão estável, avançando só com os critérios atendidos.</dd></div>
+          <div><dt>Resultado</dt><dd>A validação com clientes em produção virou a principal ferramenta de gestão de risco das entregas.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="tag">IXC Soft</span><span class="tag">Discovery</span><span class="tag">Requisitos</span></div>
+        <h3>Ouvir antes de construir</h3>
+        <dl class="steps">
+          <div><dt>Problema</dt><dd>Um chamado pedia que a seleção de atendimentos na Dash Analítica fosse limpa ao trocar de filtro.</dd></div>
+          <div><dt>O que fiz</dt><dd>Antes de aceitar a solução pedida, analisei como o cliente usava a tela de verdade.</dd></div>
+          <div><dt>Resultado</dt><dd>O cliente queria o contrário: juntar atendimentos de filtros diferentes e exportar tudo de uma vez. O requisito mudou antes de ir para o desenvolvimento.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="tag">IXC Soft</span><span class="tag">Integrações</span><span class="tag">Agentes de IA</span></div>
+        <h3>Integração com o ERP via MCP</h3>
+        <dl class="steps">
+          <div><dt>Problema</dt><dd>Agentes de IA do atendimento precisavam consultar e operar dados do ERP IXC Provedor, incluindo o módulo Financeiro.</dd></div>
+          <div><dt>O que fiz</dt><dd>Conduzi a frente de produto da integração via MCP, definindo as ferramentas disponíveis para os agentes.</dd></div>
+          <div><dt>Resultado</dt><dd>Os agentes de IA do Opa! Suite passaram a acessar dados do ERP, incluindo o Financeiro, dentro do próprio atendimento.</dd></div>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="traj-h">
+    <span class="label">Trajetória</span>
+    <h2 id="traj-h">Do suporte ao produto</h2>
+    <ol class="timeline">
+      <li><span class="t-date">mai 2022</span><span class="t-dot" aria-hidden="true"></span><div class="t-body"><strong>QA e Suporte ao Cliente · DIMO</strong><span>Testes web e mobile e atendimento direto aos clientes.</span></div></li>
+      <li><span class="t-date">jul 2022</span><span class="t-dot" aria-hidden="true"></span><div class="t-body"><strong>Desenvolvedora · DIMO</strong><span>React.js, Node.js e React Native em projetos sob medida.</span></div></li>
+      <li><span class="t-date">abr 2024</span><span class="t-dot" aria-hidden="true"></span><div class="t-body"><strong>Product Owner · DIMO</strong><span>Visão de produto e requisitos em contato direto com clientes.</span></div></li>
+      <li><span class="t-date">ago 2024</span><span class="t-dot" aria-hidden="true"></span><div class="t-body"><strong>Product Owner · AngelLira</strong><span>Produto web e mobile de tecnologia logística para transportadoras.</span></div></li>
+      <li class="now"><span class="t-date">jan 2025 – hoje</span><span class="t-dot" aria-hidden="true"></span><div class="t-body"><strong>Product Owner · IXC Soft</strong><span>Opa! Suite, plataforma SaaS de atendimento white label, web e mobile.</span></div></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <span class="label">Como trabalho</span>
+    <h2 id="how-h">Do problema à entrega</h2>
+    <div class="how">
+      <div><h3>Discovery perto do cliente</h3><p>Entrevistas, reuniões e visitas para entender o problema antes de definir a solução.</p></div>
+      <div><h3>Requisitos claros</h3><p>Épicos e histórias com regras de negócio e critérios de aceite, refinados com o time técnico.</p></div>
+      <div><h3>Protótipos e UX</h3><p>Crio protótipos no Figma e valido com o time de UX antes de ir para o desenvolvimento.</p></div>
+      <div><h3>Decisão com dados</h3><p>Plano de medição, instrumentação de eventos e análises em SQL para saber se a entrega gerou resultado.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tools-h">
+    <span class="label">Ferramentas</span>
+    <h2 id="tools-h">No dia a dia</h2>
+    <div class="tools">
+      <span>Jira</span><span>Figma</span><span>Notion</span><span>Miro</span><span>SQL</span><span>Grafana</span><span>Git e GitLab</span><span>Mobbin</span><span>Claude</span>
+    </div>
+  </section>
+
+  <footer>
+    <span>Bacharel em Ciência da Computação · Unochapecó</span>
+    <span>loebleinnaieli@gmail.com</span>
+  </footer>
+
+</div>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function(){
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(msg){ btn.textContent = msg; setTimeout(function(){ btn.textContent = 'Copiar e-mail'; }, 1800); }
+  function fallback(){
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selecionado');
+  }
+  try { navigator.clipboard.writeText(text).then(function(){ done('Copiado'); }, fallback); } catch(e){ fallback(); }
+});
+</script>
+</body>
+</html>
